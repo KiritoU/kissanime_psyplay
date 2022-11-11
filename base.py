@@ -172,9 +172,7 @@ if __name__ == "__main__":
     # Crawler_Site().crawl_film(
     #     "https://series9.la/film/the-curse-of-oak-island-season-10"
     # )
-    Crawler().crawl_film(
-        "https://ww1.kissanime.so/info/it-all-starts-with-being-reborn-1-thousand-times"
-    )
+    Crawler().crawl_film("https://ww1.kissanime.so/info/ookiku-furikabutte-season-2")
 
     # Crawler_Site().crawl_film(
     #     "https://series9.la//film/ghost-adventures-bwm", post_type="post"

@@ -93,18 +93,31 @@ class Helper:
 
         return res
 
+    def isNumber(self, strSeason: str) -> bool:
+        try:
+            float(strSeason)
+            return True
+        except Exception as e:
+            return False
+
     def get_title_and_season_number(self, title: str) -> list:
         title = title
         season_number = "1"
 
         title = " ".join(title.split())
-        x = re.search(r"\d+(th|st|nd|rd)\s(Season|Seaon|Seson|Sason)", title)
+        x = re.search(
+            r"(\d+(th|st|nd|rd)\s(Season|Seaon|Seson|Sason))|((Season|Seaon|Seson|Sason)\s\d+)",
+            title,
+        )
         if x:
             season = x.group()
             title = title.replace(season, "")
-            season_number = season.split(" ")[0]
-            for suffix in ["th", "st", "nd", "rd"]:
-                season_number = season_number.replace(suffix, "")
+            for number in season.split():
+                for suffix in ["th", "st", "nd", "rd"]:
+                    number = number.replace(suffix, "")
+
+                if self.isNumber(number):
+                    season_number = number
 
         return [
             self.format_text(title),
